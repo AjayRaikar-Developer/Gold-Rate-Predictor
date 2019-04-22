@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gold Prediction</title>
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  <div class="header">
+  <ul class="Menu">
+ 
+  <li><a href="../About Project - Master/index.html" data-hover="About Project">About Project</a></li>
+  <li><a href="#" data-hover="Developers">Developers</a></li>
+  
+  <img src="logo2.png"height=75px/>
+  <li  class="current"><a href="#" data-hover="International Market">International Market</a></li>
+  <li><a href="../National/index.html" data-hover="National Market">National Market</a></li>
+  
+</ul>
+
+  </div>
+  </head>
+  
+  <body>
+
+  <div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"></a>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "description": "Gold$ Oz",
+      "proName": "FOREXCOM:XAUUSD"
+    },
+    {
+      "description": "Silver$",
+      "proName": "OANDA:XAGUSD"
+    },
+    {
+      "description": "Platinum$",
+      "proName": "TVC:PLATINUM"
+    },
+    {
+      "description": "Palladium$",
+      "proName": "OANDA:XPDUSD"
+    },
+    {
+      "description": "INR_$",
+      "proName": "FX_IDC:INRUSD"
+    }
+  ],
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+  </div>
+  </div>
+  
+  <br/>
+  <br/>
+
+<div class="row">
+
+ <div class="column">
+   <div class="card color2 left container fonts">
+   <h4><b><center/>INTERNATIONAL MARKET <br/>Gold Spot Price</b></h4> 
+  <div class="cardcontainer">
+  <iframe src="https://www.goldbroker.com/widget/live-price/XAU?currency=USD" width="100%" height="100%" style="border:0; overflow: hidden;"></iframe>
+ 
+ </div>
+  <center/><b/><p style="color:lightblue;" id="date"></p>
+  </div>
+  </div>
+
+ <div class="column">
+   <div class="card color3 left container fonts">
+   <h4 ><b><center/>INTERNATIONAL MARKET <br/>Silver Spot Price</b></h4>
+  <div class="cardcontainer">
+   
+	
+  <iframe src="https://www.goldbroker.com/widget/live-price/XAG?currency=USD" width="100%" height="100%" style="border:0; overflow: hidden;"></iframe>
+ 
+ </div>
+  <center/><b/><p style="color:lightblue;" id="date2"></p>	
+  </div>
+  </div>
+  
+  <div class="column">
+   <div class="card color1 left container fonts">
+   <h4><b><center/>INTERNATIONAL MARKET <br/>Platinum Spot Price</b></h4>
+  <div class="cardcontainer">
+   
+	
+  <iframe src="https://www.goldbroker.com/widget/live-price/XPT?currency=USD" width="100%" height="100%" style="border:0; overflow: hidden;"></iframe>
+ 
+ </div>
+  <center/><b/><p style="color:darkblue;" id="date3"></p>
+  </div>
+  </div>
+  
+  
+    <div class="column">
+   <div class="card color4 left container fonts">
+   <h4><b><center/>INTERNATIONAL MARKET <br/>Palladium Spot Price</b></h4>
+  <div class="cardcontainer">
+   
+	
+  <iframe src="https://www.goldbroker.com/widget/live-price/XPD?currency=USD" width="100%" height="100%" style="border:0; overflow: hidden;"></iframe>
+ 
+ </div>
+  <center/><b/><p style="color:darkblue;" id="date4"></p>
+  </div>
+  </div>
+  
+  
+  
+</div>
+<br/>	
+
+
+<div>
+
+
+  <center/> <img src="logo3.png"/>
+
+</div>
+
+ <div class="historgramcard color2 container fonts">
+  <h4><font size="20px"><b><center/>HISTOGRAM OF GOLD RATES</b></h4>
+  
+ <div class="left histogramcontainer fonts ">
+
+<iframe src="https://www.goldbroker.com/widget/iframe/historical/XAU/500?currency=USD" width="100%" height="550"style="border: 0; overflow: hidden;"></iframe>
+</div>
+<br/>
+</div>
+<br/>
+ <div class="historgramcard color3 container fonts">
+  <h4><font size="20px" color="white"><b><center/>HISTOGRAM OF SILVER RATES</b></h4>
+  
+ <div class="left histogramcontainer fonts ">
+
+<iframe src="https://www.goldbroker.com/widget/iframe/historical/XAG/500?currency=USD" width="100%" height="550"style="border: 0; overflow: hidden;"></iframe>
+</div>
+<br/>
+</div>
+
+<script type="text/javascript">
+file = fopen(getScriptPath("input.txt"), 0);.
+file_length = flength(file);.
+content = fread(file, file_length);.
+document.getElementById("myDiv").innerText = content;.	
+</script>
+
+<div id="myDiv"></div>
+
+  </body>
+ 
+<script>
+var d = new Date();
+document.getElementById("date").innerHTML = d.toDateString();
+document.getElementById("date2").innerHTML = d.toDateString();
+document.getElementById("date3").innerHTML = d.toDateString();
+document.getElementById("date4").innerHTML = d.toDateString();
+
+var fs = require('fs'); 
+
+function read(file, cb) {
+  fs.readFile(file, 'utf8', function(err, data) {
+    if (!err) {
+        cb(data.toString().split('\n'))
+    } else {
+        console.log(err)
+    }
+  });
+}
+
+read(__dirname+ 'input.txt', function(data) {
+  var temperatures = [];
+  for(var temp in data){
+    temperatures.push(+data[temp].match(/\d+/g));
+  }
+  //your 'loop' logic goes here, y = temperatures
+  console.log(temperatures);
+});
+</script>
+
+</html>
