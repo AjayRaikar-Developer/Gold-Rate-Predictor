@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,500,800);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,500,800);
 .header{
   overflow: hidden;
   background-color: #212121;
@@ -114,7 +115,7 @@ body {
     border-radius: 15px 50px 30px ;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-	width:500px;
+	width:400px;
 	height:500px;
 	/*---- Helps in alignin CARD in center --*/
 	
@@ -165,7 +166,7 @@ border-radius: 25px;
 	content: '';
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-	height:360px;
+	height:305px;
 	width:300px;
 	
 	margin-left:auto;
@@ -195,12 +196,43 @@ border-radius: 25px;
 }
 
 
+
+
+table, th, td {
+  border:solid black;
+	color:white;
+	 font-family: '', Arial, sans-serif;
+  }
+
+  .Predition{
+	  color:Black;
+	   font-family: 'Muli', Arial, sans-serif;
+  }
+  
+  .fontsize{
+	  
+	  font-size:60px;
+  }
+  
+  
+ /*--------------- Indian Histogram Chart -------------*/
+ 
+ #chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+/*--------- End Of Indian Histogram Chart ------------*/
+
+
+
+
 .historgramcard {
     border-radius: 15px 50px 30px ;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-	width:"100%";
-	height:"1000px";
+	width:"50%";
+	height:"100px";
 	
 	/*---- Helps in alignin CARD in center --*/
 	
@@ -225,5 +257,5 @@ border-radius: 25px;
 	margin-right:auto;
     background:#ffff;
 	
+	
 }
-
