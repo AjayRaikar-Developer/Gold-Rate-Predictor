@@ -94,6 +94,28 @@
   </div>
   </div>
   
+  
+  
+ <div class="column">
+   <div class="card color3 left container fonts">
+   <h4 ><b><center/>NATIONAL MARKET <br/>Gold Price Predicted</b></h4>
+  <div class="cardcontainer left">
+   <br/>
+	<table bgcolor=#00000 width="300" height="50">
+		<tr><th>Tommorow's Gold Rate in India</th></tr>
+		</table>
+		<center>
+		<p class="Predition"id="pred"></p>
+		
+		<div class="Predition fontsize" id="rate"></div>
+		<p class="Predition"> 24 Karat - Rs/10gm </p>
+		<img src="https://hotemoji.com/images/dl/f/flag-of-india-emoji-by-google.png" height="30px" width="30px"/>
+		</center>
+ </div>
+  
+  <center/><b/><p style="color:lightblue;"></p>	
+  </div>
+  </div>
  
   <div class="column">
    <div class="card color1 left container fonts">
@@ -106,12 +128,9 @@
   <center/><b/><p style="color:darkblue;" id="date3"></p>
   </div>
   </div>
-  </div>
   
-  <div class="row lefts">
-
-    <div class="columns">
-   <div class="cardbig color4  container fonts">
+    <div class="column">
+   <div class="card color4 left container fonts">
    <h4><b><center/>NATIONAL MARKET <br/>Gold Spot Price on Weights</b></h4>
   <div class="cardcontainerhi">
    	<br/>
@@ -122,8 +141,8 @@
   </div>
   </div>
   
-      <div class="columns">
-   <div class="cardbig color2 left container fonts">
+      <div class="column">
+   <div class="card color2 left container fonts">
    <h4><b><center/>ASIAN MARKET <br/>Gold Spot Price on Asia</b></h4>
   <div class="cardcontainerhi">
    
@@ -138,46 +157,28 @@
   
 </div>
 <br/>	
-
-
-<div>
-
-
-  <center/> <img src="logo3.png"/>
-
 </div>
+
+ 
+<br/>
+
+
 
  <div class="historgramcard color2 container fonts">
-  <h4><font size="20px"><b><center/>HISTOGRAM OF GOLD RATES</b></h4>
+  <h4><font size="20px"><b><center/>HISTOGRAM OF GOLD RATES</b></font></h4>
   
- <div class="left histogramcontainer fonts ">
+ <div class="left histogramcontainer">
 
-<iframe src="https://www.goldbroker.com/widget/iframe/historical/XAU/500?currency=USD" width="100%" height="550"style="border: 0; overflow: hidden;"></iframe>
-</div>
-<br/>
-</div>
-<br/>
- <div class="historgramcard color3 container fonts">
-  <h4><font size="20px" color="white"><b><center/>HISTOGRAM OF SILVER RATES</b></h4>
-  
- <div class="left histogramcontainer fonts ">
-
-<iframe src="https://www.goldbroker.com/widget/iframe/historical/XAG/500?currency=USD" width="100%" height="550"style="border: 0; overflow: hidden;"></iframe>
+<div id="chartdiv"></div>
 </div>
 <br/>
 </div>
 
-<script type="text/javascript">
-file = fopen(getScriptPath("input.txt"), 0);.
-file_length = flength(file);.
-content = fread(file, file_length);.
-document.getElementById("myDiv").innerText = content;.	
-</script>
 
-<div id="myDiv"></div>
-
-  </body>
+</body>
  
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 var d = new Date();
 document.getElementById("date").innerHTML = d.toDateString();
@@ -186,26 +187,199 @@ document.getElementById("date3").innerHTML = d.toDateString();
 document.getElementById("date4").innerHTML = d.toDateString();
 document.getElementById("date5").innerHTML = d.toDateString();
 
-var fs = require('fs'); 
 
-function read(file, cb) {
-  fs.readFile(file, 'utf8', function(err, data) {
-    if (!err) {
-        cb(data.toString().split('\n'))
-    } else {
-        console.log(err)
-    }
-  });
-}
+	var xhReq = new XMLHttpRequest();
+	xhReq.open("GET", "https://sheetsu.com/apis/v1.0su/b31d1a2b0701" ,false);
+	xhReq.send(null);
+	var myList = JSON.parse(xhReq.responseText);
+	var prediction = myList[0];
+	var googledate = prediction.Date;
+	var dateofPred = new Date(googledate);
+	console.log(myList);
+	console.log(dateofPred.toDateString());
+	var rateofPred = prediction.Price_RoundUp;
+	
+	document.getElementById("pred").innerHTML = dateofPred.toDateString();
+	document.getElementById("rate").innerHTML = "₹ "+rateofPred;
+	
 
-read(__dirname+ 'input.txt', function(data) {
-  var temperatures = [];
-  for(var temp in data){
-    temperatures.push(+data[temp].match(/\d+/g));
-  }
-  //your 'loop' logic goes here, y = temperatures
-  console.log(temperatures);
-});
+</script>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+var data = [];
+
+chart.data = [{
+  "year": "1990",
+  "goldrate": 3200,
+  "lineColor": chart.colors.next()
+}, {
+  "year": "1991",
+  "goldrate": 3466,
+ }, {
+  "year": "1992",
+  "goldrate": 4334,
+  "expenses": 34.9
+}, {
+  "year": "1993",
+  "goldrate": 4140,
+  "expenses": 23.1
+}, {
+  "year": "1994",
+  "goldrate": 4598,
+  "expenses": 28.2,
+  "lineColor": chart.colors.next()
+}, {
+  "year": "1995",
+  "goldrate": 4680,
+  "expenses": 31.9
+}, {
+  "year": "1996",
+  "goldrate": 5160,
+  "expenses": 31.9
+}, {
+  "year": "1997",
+  "goldrate": 4725,
+  "expenses": 31.9,
+ }, {
+  "year": "1998",
+  "goldrate": 4045,
+  "expenses": 31.9
+}, {
+  "year": "1999",
+  "goldrate": 4234,
+  "expenses": 31.9
+}, {
+  "year": "2000",
+  "goldrate": 4400,
+  "expenses": 31.9
+}, {
+  "year": "2001",
+  "goldrate": 4300,
+  "expenses": 31.9
+}, {
+  "year": "2002",
+  "goldrate": 4990,
+  "expenses": 31.9,
+  "lineColor": chart.colors.next()
+}, {
+  "year": "2003",
+  "goldrate": 5600,
+  "expenses": 31.9
+}, {
+  "year": "2004",
+  "goldrate": 5850,
+  "expenses": 31.9
+}, {
+  "year": "2005",
+  "goldrate": 7000,
+  "expenses": 31.9
+}, {
+  "year": "2006",
+  "goldrate": 8400,
+  "expenses": 31.9
+}, {
+  "year": "2007",
+  "goldrate": 10800,
+  "expenses": 31.9
+}, {
+  "year": "2008",
+  "goldrate": 12500,
+  "expenses": 31.9
+}, {
+  "year": "2009",
+  "goldrate": 14500,
+  "expenses": 31.9
+}, {
+  "year": "2010",
+  "goldrate": 18500,
+  "expenses": 31.9
+}, {
+  "year": "2011",
+  "goldrate": 26400,
+  "expenses": 31.9
+}, {
+  "year": "2012",
+  "goldrate": 31050,
+  "expenses": 31.9
+}, {
+  "year": "2013",
+  "goldrate": 29600,
+  "expenses": 31.9
+}, {
+  "year": "2014",
+  "goldrate": 28006,
+  "expenses": 31.9
+}, {
+  "year": "2015",
+  "goldrate": 26343,
+  "expenses": 31.9
+}, {
+  "year": "2016",
+  "goldrate": 28623,
+  "expenses": 31.9
+}, {
+  "year": "2017",
+  "goldrate": 29667,
+  "expenses": 31.9
+}, {
+  "year": "2018",
+  "goldrate": 31438	,
+  "expenses": 31.9
+}];
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.ticks.template.disabled = true;
+categoryAxis.renderer.line.opacity = 0;
+categoryAxis.renderer.grid.template.disabled = true;
+categoryAxis.renderer.minGridDistance = 40;
+categoryAxis.dataFields.category = "year";
+categoryAxis.startLocation = 0.4;
+categoryAxis.endLocation = 0.6;
+
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.renderer.line.opacity = 0;
+valueAxis.renderer.ticks.template.disabled = true;
+valueAxis.min = 0;
+
+var lineSeries = chart.series.push(new am4charts.LineSeries());
+lineSeries.dataFields.categoryX = "year";
+lineSeries.dataFields.valueY = "goldrate";
+lineSeries.tooltipText = "goldrate: {valueY.value}";
+lineSeries.fillOpacity = 0.5;
+lineSeries.strokeWidth = 3;
+lineSeries.propertyFields.stroke = "lineColor";
+lineSeries.propertyFields.fill = "lineColor";
+
+var bullet = lineSeries.bullets.push(new am4charts.CircleBullet());
+bullet.circle.radius = 6;
+bullet.circle.fill = am4core.color("#fff");
+bullet.circle.strokeWidth = 3;
+
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.behavior = "panX";
+chart.cursor.lineX.opacity = 0;
+chart.cursor.lineY.opacity = 0;
+
+chart.scrollbarX = new am4core.Scrollbar();
+chart.scrollbarX.parent = chart.bottomAxesContainer;
+
+}); // end am4core.ready()
 </script>
 
 </html>
+
