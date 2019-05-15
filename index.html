@@ -23,10 +23,213 @@
   </div>
   </head>
   
+
   <body>
+  <div class="main-banner" id="main-banner">
+  <div class="imgbanbtn imgbanbtn-prev" id="imgbanbtn-prev"><div class="arrow-left"></div></div>
+  <div class="imgban" id="imgban3">
+    <div class="imgban-box">
+      <h2>Gold Rate Prediction</h2>
+      <p>Using Machine Learning Techniques.</p>
+    </div>
+  </div>
+  <div class="imgban" id="imgban2">
+    <div class="imgban-box">
+      <h2>Some cool text</h2>
+      <p>Using Machine Learning Techniques.</p>
+    </div>
+  </div>
+  <div class="imgban" id="imgban1">
+    <div class="imgban-box">
+      <h2>Gold Rate Prediction</h2>
+      <p>Using Machine Learning Techniques.</p>
+    </div>
+  </div>
+  <div class="imgbanbtn imgbanbtn-next" id="imgbanbtn-next"><div class="arrow-right"></div></div>
+</div>
+ 
+ 
+  <div class="font">
+   <div class="card color2 left container">
+  <center>
+  <h1 class="animated yourElement1 swing" style="color:white;"><b><u>Project Description</b></u></h1>
+  <div class="cardcontainer left">
+  <h2 class="animated yourElement2 bounceIn">
+  Gold Tips is a project designed to provide highly accurate future gold rates using the help of
+various ML techniques. Along with gold rate prediction, live gold, silver, and platinum rates are
+provided ( corresponding to both national and international markets) with interactive
+visualization tools.
+
+  </h2>
+ </center>
+  <br/>	 <br/>	 
+  </div>
+
+     </div>
+	
+</div>
+ 
+ 
+  
+  <!---------- Algorithm Description Module -------------------->
+  
+  
+  
+
+<div class="algo font">
+
+<h1><center/>  Algorithms Description </h1>
 
 
-    
-</body>
+	<div class="algocontainer font">
+		<div class="column active">
+			<div class="content">
+				<h1>1</h1>
+				<div class="box">
+					<h2>Linear Regression</h2>
+					<p>In statistics, linear regression is a linear approach to modelling the relationship between a dependent variable and one or more explanatory variables independent variables.	<br/>
+					<br/>
+					 </p>
+				</div>
+			</div>
+			<div class="bg bg1"></div>
+		</div>
+		<div class="column">
+			<div class="content">
+				<h1>2</h1>
+				<div class="box">
+					<h2>M.A.R.S</h2>
+					<p>Multivariate adaptive regression splines, is a flexible regression method that automatically searches for interactions and non-linear relationships. MARS models can be thought of as linear models in a higher dimensional basis space. Each term in a MARS model is a product of so called “hinge functions”.</p>
+				</div>
+			</div>
+			<div class="bg bg2"></div>
+		</div>
+		<div class="column">
+			<div class="content">
+				<h1>3</h1>
+				<div class="box">
+					<h2>XG Boost</h2>
+					<p>XGBoost is an optimized gradient boosting method, where multiple decision tree learners with high error rates are combined to form a strong learner.
+					<br/>
+					<br/>
+					<br/>
+					
+					
+					</p>
+				</div>
+			</div>
+			<div class="bg bg3"></div>
+		</div>
+		<div class="column">
+			<div class="content">
+				<h1>4</h1>
+				<div class="box">
+					<h2>Gaussian Naive Bayes</h2>
+					<p>GNB is a variation of the naive bayes theorem that uses the prior conditional probability of the target feature given the dependent features’ occurance, but also assumes that each feature has no correlation to the target.</p>
+				</div>
+			</div>
+			<div class="bg bg4"></div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(document).on('mouseover', '.algocontainer .column', function(){
+			$(this).addClass('active').siblings().removeClass('active')
+		})
+	</script>
+
+<!------------------------ End of Algorithm Description Module -------------------->  
+  
+  
+  
+<!------------------------ Start of Algorithm percentage Module -------------------->  
+
+
+
+<div class="percent font">
+<center>
+<h1 id="id">Algorithm</h1>
+
+  <div class="percentcontainer">
+  <div class="box">
+    <div class="chart" id="LR" data-percent="92" data-scale-color="#ffb400">92%</div>
+	    <h2>Linear Regression</h2>
+	
+  </div>
+ 
+  <div class="box">
+    <div class="chart" id="Mars" data-percent="94" data-scale-color="#ffb400">94%</div>
+    <h2>M.A.R.S</h2>
+  </div>
+  <div class="box">
+    <div class="chart" id="XG" data-percent="96" data-scale-color="#ffb400">96%</div>
+    <h2>XG Boost</h2>
+  </div>
+  <div class="box">
+    <div class="chart" id="Naive" data-percent="98" data-scale-color="#ffb400">98%</div>
+    <h2>Gaussian Naive Bayes</h2>
+  </div>
+
+</center>
+  </div>
+  	</div>
+	</body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+	
+
+
+<!------ Script Element Sending Value to a html element from java script 
+var ele = document.getElementById("lr")
+ele.setAttribute("data-percent","92");   ------------>
+
+<script>
+var element = document.getElementById("id");
+element.innerHTML = "Algorithm Accuracy Rate";
+</script>
+
+
+
+
+<script>
+
+
+	var xhReq = new XMLHttpRequest();
+	xhReq.open("GET", "https://api.sheety.co/b3a5b121-db67-4bb3-9081-3cac69c5027e" ,false);
+	xhReq.send(null);
+	var myList = JSON.parse(xhReq.responseText);
+	var LR_list = myList[0];
+	var Mars_list = myList[1];
+	var XG_list = myList[2];
+	var Naive_list = myList[3];
+	
+	var LR = LR_list.Accuracy_Percent;
+	var Mars = Mars_list.Accuracy_Percent;
+	var XG = XG_list.Accuracy_Percent;
+	var Naive = Naive_list.Accuracy_Percent;
+	
+	
+	var  LR_percent = document.getElementById("LR");
+	LR_percent.setAttribute("data-percent",LR.toString());	
+	
+	var  Mars_percent = document.getElementById("Mars");
+	Mars_percent.setAttribute("data-percent",Mars.toString());	
+	
+	var  XG_percent = document.getElementById("XG");
+	XG_percent.setAttribute("data-percent", XG.toString());	
+	
+	var  Naive_percent = document.getElementById("Naive");
+	Naive_percent.setAttribute("data-percent",Naive.toString());	
+	
+</script>
 
 </html>
