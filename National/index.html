@@ -68,44 +68,18 @@
   <br/>
 
 <div class="row">
-
+  
  <div class="column">
    <div class="card color2 left container fonts">
-   <h4><b><center/>NATIONAL MARKET <br/>Gold Spot Price</b></h4> 
-  <div class="cardcontainer left">
-  <br/>
-  <iframe src="https://www.goldratetoday.com/wg-00001.php" width="300px" height="300px" style="position:absolute;border:0;"></iframe>
- 
- 
-  </div>
-    <center/><b/><p style="color:lightblue;" id="date"></p>
-  </div>
-</div>
-
- <div class="column">
-   <div class="card color3 left container fonts">
-   <h4 ><b><center/>NATIONAL MARKET <br/>Gold Spot Price Hindi</b></h4>
-  <div class="cardcontainer left">
-   <br/>
-  <iframe src="https://www.goldratetoday.com/wg-00001-hi.php" width="300px" height="300px" style="position:absolute;border:0;"></iframe>
- 
- </div>
-  <center/><b/><p style="color:lightblue;" id="date2"></p>	
-  </div>
-  </div>
-  
-  
-  
- <div class="column">
-   <div class="card color3 left container fonts">
-   <h4 ><b><center/>NATIONAL MARKET <br/>Gold Price Predicted</b></h4>
+   <h4 ><b><center/>NATIONAL MARKET <br/>Gold Price</b></h4>
   <div class="cardcontainer left">
    <br/>
 	<table bgcolor=#00000 width="300" height="50">
-		<tr><th>Tommorow's Gold Rate in India</th></tr>
+		<tr><th>Today Gold Rate in India</th></tr>
 		</table>
 		<center>
-		<p class="Predition"id="pred"></p>
+		  <center/><b/><p style="color:black;" id="date"></p>
+		
 		
 		<div class="Predition fontsize" id="rate"></div>
 		<p class="Predition"> 24 Karat - Rs/10gm </p>
@@ -116,6 +90,59 @@
   <center/><b/><p style="color:lightblue;"></p>	
   </div>
   </div>
+  
+  
+  
+  
+  
+  
+   <div class="column">
+   <div class="card color3 left container fonts">
+   <h4 ><b><center/>राष्ट्रीय बाजार<br/>सोने का आज का भाव</b></h4>
+  <div class="cardcontainer left">
+   <br/>
+	<table bgcolor=#00000 width="300" height="50">
+		<tr><th>आज सोने का भाव</th></tr>
+		</table>
+		<center>
+		  <center/><b/><p style="color:black;" id="date2"></p>
+		
+		
+		<div class="Predition fontsize" id="rate1"></div>
+		<p class="Predition"> 24 कैरेट - रुपया/10 ग्राम </p>
+		<img src="https://hotemoji.com/images/dl/f/flag-of-india-emoji-by-google.png" height="30px" width="30px"/>
+		</center>
+ </div>
+  
+  <center/><b/><p style="color:lightblue;"></p>	
+  </div>
+  </div>
+  
+  
+    
+   <div class="column">
+   <div class="card color1 left container fonts">
+   <h4 ><b><center/>NATIONAL MARKET <br/>Gold Price Predicted</b></h4>
+  <div class="cardcontainer left">
+   <br/>
+	<table bgcolor=#00000 width="300" height="50">
+		<tr><th>Tommorow's Gold Rate in India</th></tr>
+		</table>
+		<center>
+		<p class="Predition"id="pred2"></p>
+		
+		<div class="Predition fontsize" id="rate2"></div>
+		<p class="Predition"> 24 Karat - Rs/10gm </p>
+		<img src="https://hotemoji.com/images/dl/f/flag-of-india-emoji-by-google.png" height="30px" width="30px"/>
+		</center>
+ </div>
+  
+  <center/><b/><p style="color:lightblue;"></p>	
+  </div>
+  </div>
+  
+  
+  
  
   <div class="column">
    <div class="card color1 left container fonts">
@@ -192,6 +219,35 @@ document.getElementById("date5").innerHTML = d.toDateString();
 	xhReq.open("GET", "https://sheetsu.com/apis/v1.0bu/aa3665114197" ,false);
 	xhReq.send(null);
 	var myList = JSON.parse(xhReq.responseText);
+	var livegold = myList[0];
+	var liverate = livegold.Live_Rate;
+		
+	document.getElementById("rate").innerHTML = "₹ "+liverate;
+	
+
+	
+	
+	
+
+	var xhReq = new XMLHttpRequest();
+	xhReq.open("GET", "https://sheetsu.com/apis/v1.0bu/aa3665114197" ,false);
+	xhReq.send(null);
+	var myList = JSON.parse(xhReq.responseText);
+	var livegold = myList[0];
+	var liverate = livegold.Live_Rate;
+		
+	document.getElementById("rate1").innerHTML = "₹ "+liverate;
+	
+	
+	
+	
+	
+
+
+	var xhReq = new XMLHttpRequest();
+	xhReq.open("GET", "https://sheetsu.com/apis/v1.0bu/aa3665114197" ,false);
+	xhReq.send(null);
+	var myList = JSON.parse(xhReq.responseText);
 	var prediction = myList[0];
 	var googledate = prediction.Date;
 	var dateofPred = new Date(googledate);
@@ -199,8 +255,10 @@ document.getElementById("date5").innerHTML = d.toDateString();
 	console.log(dateofPred.toDateString());
 	var rateofPred = prediction.Price_RoundUp;
 	
-	document.getElementById("pred").innerHTML = dateofPred.toDateString();
-	document.getElementById("rate").innerHTML = "₹ "+rateofPred;
+	document.getElementById("pred2").innerHTML = dateofPred.toDateString();
+	document.getElementById("rate2").innerHTML = "₹ "+rateofPred;
+	
+	
 	
 
 </script>
