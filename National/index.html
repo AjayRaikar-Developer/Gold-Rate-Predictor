@@ -261,8 +261,8 @@ document.getElementById("date5").innerHTML = d.toDateString();
 	
 	const today = new Date();
 	const tomorrow = new Date(today);
-	const finaldate = tomorrow.setDate(tomorrow.getDate() + 1);
-	document.getElementById("pred2").innerHTML = finaldate.toDateString();
+	tomorrow.setDate(tomorrow.getDate() + 1);
+	document.getElementById("pred2").innerHTML = tomorrow.toDateString();
 	document.getElementById("rate2").innerHTML = "₹ "+rateofPred;
 	
 	
