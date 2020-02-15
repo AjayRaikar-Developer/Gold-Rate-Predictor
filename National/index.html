@@ -255,7 +255,13 @@ document.getElementById("date5").innerHTML = d.toDateString();
 	console.log(dateofPred.toDateString());
 	var rateofPred = prediction.Price_RoundUp;
 	
-	document.getElementById("pred2").innerHTML = dateofPred.toDateString();
+	/*Date from Code*/
+	/*document.getElementById("pred2").innerHTML = dateofPred.toDateString();*/
+	
+	
+	const today = new Date()
+	const tomorrow = new Date(today)
+	document.getElementById("pred2").innerHTML = tomorrow.setDate(tomorrow.getDate() + 1);
 	document.getElementById("rate2").innerHTML = "₹ "+rateofPred;
 	
 	
